@@ -31,7 +31,7 @@ sqlStmt :
     | updateStmt ;
 
 createDbStmt :
-    K_CREATE K_DATABASE databaseName ;
+    K_CREATE K_DATABASE ( K_IF K_EXISTS )? databaseName ;
 
 dropDbStmt :
     K_DROP K_DATABASE ( K_IF K_EXISTS )? databaseName ;
@@ -68,7 +68,7 @@ quitStmt :
     K_QUIT;
 
 showTableStmt :
-    K_SHOW K_TABLE tableName;
+    K_SHOW K_DATABASE databaseName;
 
 insertStmt :
     K_INSERT K_INTO tableName ( '(' columnName ( ',' columnName )* ')' )?
