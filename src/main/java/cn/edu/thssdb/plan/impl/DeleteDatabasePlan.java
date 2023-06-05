@@ -19,28 +19,34 @@
 package cn.edu.thssdb.plan.impl;
 
 import cn.edu.thssdb.plan.LogicalPlan;
-import cn.edu.thssdb.schema.Manager;
 
-public class CreateDatabasePlan extends LogicalPlan {
+public class DeleteDatabasePlan extends LogicalPlan {
 
-  private static String databaseName;
+  private String databaseName;
+  private boolean ifExists;
 
-  public CreateDatabasePlan(String databaseName) {
-    super(LogicalPlanType.CREATE_DB);
+  public DeleteDatabasePlan(String databaseName, boolean ifExists) {
+    super(LogicalPlanType.DELETE_DB);
     this.databaseName = databaseName;
+    this.ifExists = ifExists;
   }
 
   public String getDatabaseName() {
     return databaseName;
   }
 
-  @Override
-  public String toString() {
-    return "CreateDatabasePlan{" + "databaseName='" + databaseName + '\'' + '}';
+  public boolean getIfExists() {
+    return ifExists;
   }
 
-  public static void execute() {
-    Manager manager = Manager.getInstance();
-    manager.createDatabase(databaseName);
+  @Override
+  public String toString() {
+    return "DeleteDatabasePlan{"
+        + "databaseName='"
+        + databaseName
+        + '\''
+        + ", ifExists="
+        + ifExists
+        + '}';
   }
 }
