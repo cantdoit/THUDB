@@ -8,6 +8,7 @@ import java.util.StringJoiner;
 public class Row implements Serializable {
   private static final long serialVersionUID = -5809782578272943999L;
   protected ArrayList<Entry> entries;
+  private Column[] columns;
 
   public Row() {
     this.entries = new ArrayList<>();
@@ -30,5 +31,13 @@ public class Row implements Serializable {
     StringJoiner sj = new StringJoiner(", ");
     for (Entry e : entries) sj.add(e.toString());
     return sj.toString();
+  }
+
+  public Column[] getColumns() {
+    return columns;
+  }
+
+  public void setColumns(Column[] columns) {
+    this.columns = columns;
   }
 }

@@ -3,11 +3,11 @@ package cn.edu.thssdb.schema;
 import cn.edu.thssdb.type.ColumnType;
 
 public class Column implements Comparable<Column> {
-  private String name;
-  private ColumnType type;
-  private int primary;
-  private boolean notNull;
-  private int maxLength;
+  String name;
+  ColumnType type;
+  int primary;
+  boolean notNull;
+  int maxLength;
 
   public Column(String name, ColumnType type, int primary, boolean notNull, int maxLength) {
     this.name = name;
