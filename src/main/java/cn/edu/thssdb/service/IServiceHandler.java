@@ -16,6 +16,14 @@ import cn.edu.thssdb.utils.Global;
 import cn.edu.thssdb.utils.StatusUtil;
 import org.apache.thrift.TException;
 
+//调用 Manager
+import cn.edu.thssdb.schema.Manager;
+
+//import 相关文件
+import cn.edu.thssdb.plan.impl.CreateDatabasePlan;
+import cn.edu.thssdb.plan.impl.DropDatabasePlan;
+import cn.edu.thssdb.plan.impl.UseDatabasePlan;
+
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -51,8 +59,30 @@ public class IServiceHandler implements IService.Iface {
     LogicalPlan plan = LogicalGenerator.generate(req.statement);
     switch (plan.getType()) {
       case CREATE_DB:
-        System.out.println("[DEBUG] " + plan);
+        CreateDatabasePlan createDatabasePlan = (CreateDatabasePlan) plan;
+        System.out.println("[DEBUG] " + createDatabasePlan);
+        //TODO 创建数据库相关逻辑
+        String dbName = createDatabasePlan.getDatabaseName();
+        //TODO 重要：完善Manager->()
+        //Manager.getInstance().createDatabase(dbName);
+        break;
         return new ExecuteStatementResp(StatusUtil.success(), false);
+      case DROP_DB:
+        DropDatabasePlan dropDatabasePlan = (DropDatabasePlan) plan;
+        System.out.println("[DEBUG] " + dropDatabasePlan);
+        //TODO
+        String dbName = dropDatabasePlan.getDatabaseName();
+        //Manager.getInstance().dropDatabase(dbName);
+        break;
+      case USE_DB:
+        UseDatabasePlan useDatabasePlan = (UseDatabasePlan) plan;
+        System.out.println("[DEBUG] " + useDatabasePlan);
+        //TODO
+        String dbName = useDatabasePlan.getDatabaseName();
+        // Manager.getInstance().useDatabase(dbName);
+        // Session session = sessionMap.get(req.getSessionId());
+        // session.setCurrentDatabase(dbName);
+        break;
       default:
     }
     return null;
