@@ -21,6 +21,7 @@ package cn.edu.thssdb.plan.impl;
 import cn.edu.thssdb.plan.LogicalPlan;
 
 public class CreateDatabasePlan extends LogicalPlan {
+    private String name; //数据库名
 
   private String databaseName;
 

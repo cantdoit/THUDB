@@ -6,6 +6,3 @@ https://apache-iotdb.feishu.cn/docx/EuVyd4o04oSHzZxRtBFcfRa0nab
 
 ## 《数据库原理》ThssDB2023 开发指南
 https://apache-iotdb.feishu.cn/docx/RHnTd3Y3tocJQSxIIJFcDmlHnDd
-
-
-Using this as the main filesource, all subsquent changes should be done in a seperate branch and then merged
